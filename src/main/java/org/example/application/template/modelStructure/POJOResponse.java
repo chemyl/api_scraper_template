@@ -1,6 +1,5 @@
 package org.example.application.template.modelStructure;
 
-import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,11 +33,5 @@ public class POJOResponse {
         this.link = response.body().jsonPath().getString("link");
         this.key = response.body().jsonPath().getString("key");
         this.accessibility = response.body().jsonPath().getDouble("accessibility");
-    }
-
-    public void checkResponseChema(Response response) {
-        response.then().assertThat()
-                .body(JsonSchemaValidator
-                              .matchesJsonSchemaInClasspath("schemas/jsonSchema.json"));
     }
 }
